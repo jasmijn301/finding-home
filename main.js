@@ -1,14 +1,14 @@
 const myVideo = document.getElementById("myVideo");
 const btnPlay = document.getElementById("btnPlay");
 const btnPause = document.getElementById("btnPause");
-const btnStop = document.getElementById("btnStop");
 const timeOut = document.getElementById("timeOut");
 const vidNumOut = document.getElementById("vidNum");
 let timer = null;
 
+document.getElementById("nextButtons").style.visibility = "hidden";
+
 btnPlay.addEventListener("click",vidAction);
 btnPause.addEventListener("click", vidAction);
-btnStop.addEventListener("click",vidAction);
 btnNext.addEventListener("click",nextVideo);
 myVideo.addEventListener("ended",vidEnded);
 
@@ -25,10 +25,7 @@ function vidAction(event){
         case "btnPause":
             myVideo.pause();
             break;
-        case "btnStop":
-            myVideo.pause();
-            myVideo.currentTime = 0;
-            break;        
+       
     }
 }
 
@@ -36,12 +33,18 @@ function playVideo(){
     myVideo.play();
     timer = setInterval(update, 100);
 
-    // update elke 100 ms de tijd die gedisplayed wordt
+    // update every 100 ms the time being displayed
 }
 
 function update(){
     timeOut.innerHTML = "Time: " + myTime(myVideo.currentTime) + "/" + myTime(myVideo.duration);
-
+    console.log("Time: " + myTime(myVideo.currentTime) + "/" + myTime(myVideo.duration));
+    if (myTime(myVideo.currentTime) >= (myTime(myVideo.duration) / 2)){
+        document.getElementById("nextButtons").style.visibility = "visible";
+        console.log("visible");
+    } else {
+        console.log("not visible");
+    }
 }
 
 function myTime(time) {
