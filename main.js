@@ -13,7 +13,7 @@ btnNext2.addEventListener("click", nextVideo2);
 myVideo.addEventListener("ended", vidEnded);
 
 //videos
-const vids = ["1.mp4", "2.mp4", "3.mp4", "4.mp4", "5.mp4", "6.mp4", "7.mp4"];
+const vids = ["1.mp4", "1.5.mp4", "2.mp4", "2.5.mp4", "3.mp4", "3.5.mp4", "4.mp4", "5.mp4", "6.mp4", "7.mp4"];
 let vidPlaying = 0;
 
 function playPause(event) {
@@ -40,7 +40,7 @@ function playVideo() {
     // update every 100 ms the time being displayed
     timer = setInterval(update, 100);
 
-    // hidden();
+    hidden();
 }
 
 function update() {
@@ -48,20 +48,16 @@ function update() {
     timeOut.innerHTML = "Time: " + myTime(myVideo.currentTime) + "/" + myTime(myVideo.duration);
 }
 
-// function hidden() {
+function hidden() {
 
-//     console.log(vidPlaying);
-//     if (vidPlaying == 0) {
-//         document.getElementById("nextButtons").style.visibility = "hidden";
-//     } else if (vidPlaying == 1) {
-//         document.getElementById("nextButtons").style.visibility = "visible";
-//     } else if (vidPlaying == 2) {
-//         document.getElementById("nextButtons").style.visibility = "hidden";
-//     } else {
-//         document.getElementById("nextButtons").style.visibility = "visible";
-//     }
-
-// }
+    if (vidPlaying == 0 || vidPlaying == 2 || vidPlaying == 4) {
+        document.getElementById("nextButtons").style.visibility = "hidden";
+        document.getElementById("timeOut").style.visibility = "hidden";
+    } else {
+        document.getElementById("nextButtons").style.visibility = "visible";
+        document.getElementById("timeOut").style.visibility = "visible";
+    }
+}
 
 //make time readable for humans
 function myTime(time) {
@@ -92,15 +88,9 @@ function vidEnded() {
 function nextVideo1() {
 
     //check which video is playing and direct to the video of choice
-    if (vidPlaying == 0) {
-        vidPlaying = 1;
-    } else if (vidPlaying == 1) {
-        vidPlaying = 2;
-        removeButton();
-    } else if (vidPlaying == 4) {
-        vidPlaying = 5;
-        removeButton();
-    } else if (vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 6 || vidPlaying == 7) {
+    if (vidPlaying == 0 ||vidPlaying == 1 || vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 4 ||vidPlaying == 7) {
+        vidPlaying = vidPlaying + 1;
+    } else if (vidPlaying == 5 || vidPlaying == 6 || vidPlaying == 8 || vidPlaying == 9) {
         document.getElementById("btnNext2").style.visibility = "visible";
         btnNext1.innerHTML = "option 1";
         vidPlaying = 0;
@@ -114,13 +104,13 @@ function nextVideo1() {
 function nextVideo2() {
 
     //check which video is playing and direct to the video of choice
-    if (vidPlaying == 0) {
-        vidPlaying = 4;
-    } else if (vidPlaying == 1) {
-        vidPlaying = 3;
-        removeButton();
-    } else if (vidPlaying == 4) {
+    if (vidPlaying == 1) {
+        vidPlaying = 7;
+    } else if (vidPlaying == 3) {
         vidPlaying = 6;
+        removeButton();
+    } else if (vidPlaying == 7) {
+        vidPlaying = 9;
         removeButton();
     } else {
         removeButton();
