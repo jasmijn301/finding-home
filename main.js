@@ -5,7 +5,7 @@ const timeOut = document.getElementById("timeOut");
 const vidNumOut = document.getElementById("vidNum");
 let timer = null;
 
-document.getElementById("nextButtons").style.visibility = "hidden";
+
 
 btnPlay.addEventListener("click",vidAction);
 btnPause.addEventListener("click", vidAction);
@@ -32,20 +32,25 @@ function vidAction(event){
 function playVideo(){
     myVideo.play();
     timer = setInterval(update, 100);
-
+    hidden();
     // update every 100 ms the time being displayed
 }
 
 function update(){
     timeOut.innerHTML = "Time: " + myTime(myVideo.currentTime) + "/" + myTime(myVideo.duration);
-    console.log("Time: " + myTime(myVideo.currentTime) + "/" + myTime(myVideo.duration));
-    if (myTime(myVideo.currentTime) >= (myTime(myVideo.duration) / 2)){
-        document.getElementById("nextButtons").style.visibility = "visible";
-        console.log("visible");
-    } else {
-        console.log("not visible");
-    }
 }
+
+function hidden() {
+    console.log(vidPlaying);
+if (vidPlaying == 0){
+    document.getElementById("nextButtons").style.visibility = "hidden";
+} else if (vidPlaying == 1){
+    document.getElementById("nextButtons").style.visibility = "visible";
+} else if (vidPlaying == 2){
+    document.getElementById("nextButtons").style.visibility = "hidden";
+} else {
+    document.getElementById("nextButtons").style.visibility = "visible";
+}}
 
 function myTime(time) {
 
