@@ -9,11 +9,12 @@ let timer = null;
 
 btnPlay.addEventListener("click",vidAction);
 btnPause.addEventListener("click", vidAction);
-btnNext.addEventListener("click",nextVideo);
+btnNext1.addEventListener("click",nextVideo1);
+btnNext2.addEventListener("click",nextVideo2);
 myVideo.addEventListener("ended",vidEnded);
 
 //Vids
-const vids = ["1.mp4", "2.mp4", "3.mp4", "4.mp4"];
+const vids = ["1.mp4", "2.mp4", "3.mp4", "4.mp4", "5.mp4", "6.mp4", "7.mp4"];
 let vidPlaying = 0;
 
 function vidAction(event){
@@ -21,9 +22,13 @@ function vidAction(event){
         case "btnPlay":
             playVideo();
             timer = setInterval(update, 100);
+            document.getElementById("btnPlay").style.visibility = "hidden";
+            document.getElementById("btnPause").style.visibility = "visible";
             break;
         case "btnPause":
             myVideo.pause();
+            document.getElementById("btnPause").style.visibility = "hidden";
+            document.getElementById("btnPlay").style.visibility = "visible";
             break;
        
     }
@@ -32,7 +37,7 @@ function vidAction(event){
 function playVideo(){
     myVideo.play();
     timer = setInterval(update, 100);
-    hidden();
+    // hidden();
     // update every 100 ms the time being displayed
 }
 
@@ -71,19 +76,56 @@ function myTime(time) {
 function vidEnded(){
     clearInterval(timer);
     timeOut.innerHTML = "Timer: 0";
-    nextVideo();
+    nextVideo1();
     playVideo();
 }
 
-function nextVideo(){
+function nextVideo1(){
     // start with checking which video is playing
-    if(vidPlaying < 3){
+    if(vidPlaying == 0){
         // 3 in this case because there are 4 videos
-        vidPlaying++;
-    } else {
+        vidPlaying = 1;
+    } else if (vidPlaying == 1) {
+        vidPlaying = 2;
+        removeButton();
+    } else if (vidPlaying == 4) {
+        vidPlaying = 5;
+        removeButton();
+    } else if (vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 6 || vidPlaying == 7){
+        document.getElementById("btnNext2").style.visibility = "visible";
+        btnNext1.innerHTML = "option 1";
+        vidPlaying = 0;
+    }
+    else {
+        nextVideo2();
+    }
+    myVideo.src = vids[vidPlaying];
+    vidNumOut.innerHTML = (vidPlaying+1) +"/7";
+
+}
+
+function nextVideo2(){
+    // start with checking which video is playing
+    if(vidPlaying == 0){
+        // 3 in this case because there are 4 videos
+        vidPlaying = 4;
+    } else if (vidPlaying == 1){
+        vidPlaying = 3;
+        removeButton();
+    } else if (vidPlaying == 4){
+        vidPlaying = 6;
+        removeButton();
+    }
+    else {
+        removeButton();        
         vidPlaying = 0;
     }
     myVideo.src = vids[vidPlaying];
-    vidNumOut.innerHTML = (vidPlaying+1) +"/4";
+    vidNumOut.innerHTML = (vidPlaying+1) +"/7";
 
+}
+
+function removeButton() {
+    document.getElementById("btnNext2").style.visibility = "hidden";
+    btnNext1.innerHTML = "replay";
 }
