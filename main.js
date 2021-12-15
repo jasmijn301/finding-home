@@ -53,7 +53,11 @@ function hidden() {
     if (vidPlaying == 0 || vidPlaying == 2 || vidPlaying == 4) {
         document.getElementById("nextButtons").style.visibility = "hidden";
         document.getElementById("timeOut").style.visibility = "hidden";
-    } else {
+    } else if (vidPlaying == 5 || vidPlaying == 6 || vidPlaying == 8 || vidPlaying == 9) {
+        document.getElementById("nextButtons").style.visibility = "hidden";
+        document.getElementById("timeOut").style.visibility = "hidden";
+    }
+    else {
         document.getElementById("nextButtons").style.visibility = "visible";
         document.getElementById("timeOut").style.visibility = "visible";
     }
@@ -80,9 +84,13 @@ function vidEnded() {
     timeOut.innerHTML = "Timer: 0";
 
     //make sure if the player doesn't pick an option, the video still continues
-    nextVideo1();
-
-    playVideo();
+    if (vidPlaying == 0 || vidPlaying == 1 ||vidPlaying == 2 ||vidPlaying == 3 ||vidPlaying == 4 ||vidPlaying == 7) {
+        nextVideo1();
+    } else {
+        document.getElementById("btnNext1").style.visibility = "visible";
+        document.getElementById("btnNext2").style.visibility = "hidden";
+        btnNext1.innerHTML = "replay";
+    }
 }
 
 function nextVideo1() {
@@ -99,6 +107,8 @@ function nextVideo1() {
     }
     myVideo.src = vids[vidPlaying];
     vidNumOut.innerHTML = (vidPlaying + 1) + "/7";
+
+    playVideo();
 }
 
 function nextVideo2() {
@@ -118,6 +128,8 @@ function nextVideo2() {
     }
     myVideo.src = vids[vidPlaying];
     vidNumOut.innerHTML = (vidPlaying + 1) + "/7";
+
+    playVideo();
 }
 
 function removeButton() {
