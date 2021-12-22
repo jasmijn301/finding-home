@@ -16,14 +16,55 @@ document.getElementById("btnPause").style.visibility = "hidden";
 document.getElementById("nextButtons").style.visibility = "hidden";
 document.getElementById("clockitself").style.visibility = "hidden";
 
+//style of the chosen button
+document.getElementById("btnNext1").style.background = "white";
+document.getElementById("btnNext2").style.background = "skyblue";
+
 var timesUp = document.getElementById("pointer");
-
-
-// Standard syntax
 timesUp.addEventListener("animationend", myEndFunction);
 
-function myEndFunction(event){
+function myEndFunction(event) {
     console.log("end");
+    if (choice == 1) {
+        //check which video is playing and direct to the video of choice
+        //if the last video is playing reset the buttons
+        if (vidPlaying == 0 || vidPlaying == 1 || vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 4 || vidPlaying == 7 || vidPlaying == 8) {
+            vidPlaying = vidPlaying + 1;
+        } else if (vidPlaying == 5 || vidPlaying == 6 || vidPlaying == 9 || vidPlaying == 10) {
+            document.getElementById("btnNext2").style.visibility = "visible";
+            btnNext1.innerHTML = "option 1";
+            vidPlaying = 0;
+            timer = null;
+            document.getElementById("nextButtons").style.visibility = "visible";
+            document.getElementById("timeOut").style.visibility = "visible";
+        } else {
+            nextVideo2();
+        }
+        myVideo.src = vids[vidPlaying];
+        vidNumOut.innerHTML = (vidPlaying) + "/9";
+
+        playVideo();
+    } else if (choice == 2) {
+        //check which video is playing and direct to the video of choice
+        if (vidPlaying == 1) {
+            vidPlaying = 7;
+        } else if (vidPlaying == 3) {
+            vidPlaying = 6;
+            removeButton();
+        } else if (vidPlaying == 8) {
+            vidPlaying = 10;
+            removeButton();
+        } else {
+            removeButton();
+            vidPlaying = 0;
+        }
+        myVideo.src = vids[vidPlaying];
+        vidNumOut.innerHTML = (vidPlaying) + "/9";
+
+        playVideo();
+    } else {
+        console.log("error: choice element")
+    }
 }
 
 //videos
@@ -55,6 +96,8 @@ function playPause(event) {
 }
 
 function playVideo() {
+
+    console.log(choice);
 
     myVideo.play();
 
@@ -105,8 +148,8 @@ function vidEnded() {
     timeOut.innerHTML = "Timer: 0";
 
     //make sure if the player doesn't pick an option, the video still continues
-    if (vidPlaying == 0 || vidPlaying == 1 ||vidPlaying == 2 ||vidPlaying == 3 || vidPlaying == 4 || vidPlaying == 7 || vidPlaying == 8) {
-        nextVideo1();
+    if (vidPlaying == 0 || vidPlaying == 1 || vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 4 || vidPlaying == 7 || vidPlaying == 8) {
+        myEndFunction();
     } else {
         document.getElementById("btnNext1").style.visibility = "visible";
         document.getElementById("btnNext2").style.visibility = "hidden";
@@ -116,45 +159,19 @@ function vidEnded() {
 
 function nextVideo1() {
 
-    //check which video is playing and direct to the video of choice
-    //if the last video is playing reset the buttons
-    if (vidPlaying == 0 ||vidPlaying == 1 || vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 4 || vidPlaying == 7 || vidPlaying == 8) {
-        vidPlaying = vidPlaying + 1;
-    } else if (vidPlaying == 5 || vidPlaying == 6 || vidPlaying == 9 || vidPlaying == 10) {
-        document.getElementById("btnNext2").style.visibility = "visible";
-        btnNext1.innerHTML = "option 1";
-        vidPlaying = 0;
-        timer = null;
-        document.getElementById("nextButtons").style.visibility = "visible";
-        document.getElementById("timeOut").style.visibility = "visible";
-    } else {
-        nextVideo2();
-    }
-    myVideo.src = vids[vidPlaying];
-    vidNumOut.innerHTML = (vidPlaying) + "/9";
+    choice = 1;
+    document.getElementById("btnNext1").style.background = "white";
+    document.getElementById("btnNext2").style.background = "skyblue";
 
-    playVideo();
 }
 
 function nextVideo2() {
 
-    //check which video is playing and direct to the video of choice
-    if (vidPlaying == 1) {
-        vidPlaying = 7;
-    } else if (vidPlaying == 3) {
-        vidPlaying = 6;
-        removeButton();
-    } else if (vidPlaying == 8) {
-        vidPlaying = 10;
-        removeButton();
-    } else {
-        removeButton();
-        vidPlaying = 0;
-    }
-    myVideo.src = vids[vidPlaying];
-    vidNumOut.innerHTML = (vidPlaying) + "/9";
+    choice = choice + 1;
+    document.getElementById("btnNext1").style.background = "skyblue";
+    document.getElementById("btnNext2").style.background = "white";
 
-    playVideo();
+
 }
 
 function removeButton() {
@@ -163,4 +180,3 @@ function removeButton() {
     document.getElementById("btnNext2").style.visibility = "hidden";
     btnNext1.innerHTML = "replay";
 }
-
