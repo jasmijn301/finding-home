@@ -13,13 +13,14 @@ btnNext2.addEventListener("click", nextVideo2);
 myVideo.addEventListener("ended", vidEnded);
 
 document.getElementById("btnPause").style.visibility = "hidden";
+document.getElementById("nextButtons").style.visibility = "hidden";
+document.getElementById("clockitself").style.visibility = "hidden";
 
 var timesUp = document.getElementById("pointer");
 
 
 // Standard syntax
 timesUp.addEventListener("animationend", myEndFunction);
-// pointer.addEventListener("animationend", AnimationListener, false);
 
 function myEndFunction(event){
     console.log("end");
@@ -28,6 +29,9 @@ function myEndFunction(event){
 //videos
 const vids = ["1.mp4", "1.5.mp4", "2.mp4", "2.5.mp4", "3.mp4", "3.5.mp4", "4.mp4", "5.mp4", "5.5.mp4", "6.mp4", "7.mp4"];
 let vidPlaying = 0;
+
+let choice = 1;
+// choice 1 means option 1 is chosen, choice 2 means option 2 is chosen.
 
 function playPause(event) {
 
@@ -38,7 +42,7 @@ function playPause(event) {
             document.getElementById("btnPlay").style.visibility = "hidden";
             document.getElementById("btnPause").style.visibility = "visible";
             //make sure the stopwatch starts/continues when play is pressed
-            document.getElementById("pointer").style.animationPlayState = "running";
+            // document.getElementById("pointer").style.animationPlayState = "running";
             break;
         case "btnPause":
             myVideo.pause();
@@ -71,9 +75,12 @@ function hidden() {
     if (vidPlaying == 0 || vidPlaying == 2 || vidPlaying == 4 || vidPlaying == 6 || vidPlaying == 7 || vidPlaying == 9 || vidPlaying == 10) {
         document.getElementById("nextButtons").style.visibility = "hidden";
         document.getElementById("timeOut").style.visibility = "hidden";
+        document.getElementById("clockitself").style.visibility = "hidden";
     } else {
         document.getElementById("nextButtons").style.visibility = "visible";
         document.getElementById("timeOut").style.visibility = "visible";
+        document.getElementById("pointer").style.animationPlayState = "running";
+        document.getElementById("clockitself").style.visibility = "visible";
     }
 }
 
