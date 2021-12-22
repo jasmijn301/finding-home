@@ -22,3 +22,56 @@ button{
     width: 100%;
 }
  
+
+#clockitself {
+  width: 50%;
+  padding-bottom: 50%;
+  background-color: rgb(121, 224, 255);
+  border: 5px solid black;
+  border-radius: 50%;
+  position: relative;
+}
+
+.stopwatch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8%;
+  padding: 10px;
+}
+
+#pointer {
+  position: absolute;
+  width: 4px;
+  height: 45%;
+  background-color: black;
+  left: calc(50% - 2px);
+  bottom: 50%;
+  /* the animation itself: */
+  animation: rotate-pointer;
+  animation-duration: 5s;
+  /* animation-iteration-count: infinite;  */
+  animation-timing-function: linear;
+  transform-origin: center bottom;
+  animation-play-state: paused;
+}
+
+@keyframes rotate-pointer {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.centerdot {
+  position: absolute;
+  left: calc(50% - 5px);
+  top: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: black;
+}
