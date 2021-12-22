@@ -12,6 +12,19 @@ btnNext1.addEventListener("click", nextVideo1);
 btnNext2.addEventListener("click", nextVideo2);
 myVideo.addEventListener("ended", vidEnded);
 
+document.getElementById("btnPause").style.visibility = "hidden";
+
+var timesUp = document.getElementById("pointer");
+
+
+// Standard syntax
+timesUp.addEventListener("animationend", myEndFunction);
+// pointer.addEventListener("animationend", AnimationListener, false);
+
+function myEndFunction(event){
+    console.log("end");
+}
+
 //videos
 const vids = ["1.mp4", "1.5.mp4", "2.mp4", "2.5.mp4", "3.mp4", "3.5.mp4", "4.mp4", "5.mp4", "5.5.mp4", "6.mp4", "7.mp4"];
 let vidPlaying = 0;
@@ -24,11 +37,15 @@ function playPause(event) {
             timer = setInterval(update, 100);
             document.getElementById("btnPlay").style.visibility = "hidden";
             document.getElementById("btnPause").style.visibility = "visible";
+            //make sure the stopwatch starts/continues when play is pressed
+            document.getElementById("pointer").style.animationPlayState = "running";
             break;
         case "btnPause":
             myVideo.pause();
             document.getElementById("btnPause").style.visibility = "hidden";
             document.getElementById("btnPlay").style.visibility = "visible";
+            //make sure the stopwatch doesn't play when the video is paused
+            document.getElementById("pointer").style.animationPlayState = "paused";
             break;
     }
 }
@@ -139,3 +156,4 @@ function removeButton() {
     document.getElementById("btnNext2").style.visibility = "hidden";
     btnNext1.innerHTML = "replay";
 }
+

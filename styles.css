@@ -40,7 +40,7 @@ button{
   padding: 10px;
 }
 
-.pointer {
+#pointer {
   position: absolute;
   width: 4px;
   height: 45%;
@@ -50,8 +50,10 @@ button{
   /* the animation itself: */
   animation: rotate-pointer;
   animation-duration: 5s;
+  /* animation-iteration-count: infinite;  */
   animation-timing-function: linear;
   transform-origin: center bottom;
+  animation-play-state: paused;
 }
 
 @keyframes rotate-pointer {
