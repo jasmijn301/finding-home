@@ -13,7 +13,7 @@ myVideo.addEventListener("ended", vidEnded);
 //visibility
 document.getElementById("btnPause").style.visibility = "hidden";
 document.getElementById("nextButtons").style.visibility = "hidden";
-document.getElementById("clockitself").style.visibility = "hidden";
+// document.getElementById("clockitself").style.visibility = "hidden";
 
 //style of the chosen button
 document.getElementById("btnNext1").style.background = "white";
@@ -21,6 +21,7 @@ document.getElementById("btnNext2").style.background = "skyblue";
 
 //animation
 var timesUp = document.getElementById("pointer");
+var timesUp = document.getElementById("pointer2");
 timesUp.addEventListener("animationend", animationEnds);
 
 //videos
@@ -34,7 +35,7 @@ let choice = 1;
 function animationEnds(event) {
 
     console.log("end");
-    
+
     if (choice == 1) {
         //check which video is playing and direct to the video of choice
         //if the last video is playing reset the buttons
@@ -82,8 +83,6 @@ function playPause(event) {
             playVideo();
             document.getElementById("btnPlay").style.visibility = "hidden";
             document.getElementById("btnPause").style.visibility = "visible";
-            //make sure the stopwatch starts/continues when play is pressed
-            // document.getElementById("pointer").style.animationPlayState = "running";
             break;
         case "btnPause":
             myVideo.pause();
@@ -91,6 +90,7 @@ function playPause(event) {
             document.getElementById("btnPlay").style.visibility = "visible";
             //make sure the stopwatch doesn't play when the video is paused
             document.getElementById("pointer").style.animationPlayState = "paused";
+            document.getElementById("pointer2").style.animationPlayState = "paused";
             break;
     }
 }
@@ -109,11 +109,16 @@ function visibility() {
     //the option buttons should be hidden at the first part of each fragment and with the end vids
     if (vidPlaying == 0 || vidPlaying == 2 || vidPlaying == 4 || vidPlaying == 6 || vidPlaying == 7 || vidPlaying == 9 || vidPlaying == 10) {
         document.getElementById("nextButtons").style.visibility = "hidden";
-        document.getElementById("clockitself").style.visibility = "hidden";
-    } else {
+        // document.getElementById("clockitself").style.visibility = "hidden";
+    } else if (vidPlaying == 1) {
         document.getElementById("nextButtons").style.visibility = "visible";
         document.getElementById("pointer").style.animationPlayState = "running";
-        document.getElementById("clockitself").style.visibility = "visible";
+        // document.getElementById("clockitself").style.visibility = "visible";
+    } else if (vidPlaying == 3 || vidPlaying == 8) {
+        document.getElementById("nextButtons").style.visibility = "visible";
+        document.getElementById("pointer2").style.animationPlayState = "running";
+    } else {
+        console.log("error: visibility()")
     }
 }
 

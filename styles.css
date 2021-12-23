@@ -33,6 +33,15 @@ button {
   position: relative;
 }
 
+#clockitself2 {
+  width: 50%;
+  padding-bottom: 50%;
+  background-color: rgb(121, 224, 255);
+  border: 5px solid black;
+  border-radius: 50%;
+  position: relative;
+}
+
 .stopwatch {
   display: flex;
   justify-content: center;
@@ -57,7 +66,33 @@ button {
   animation-play-state: paused;
 }
 
+#pointer2 {
+  position: absolute;
+  width: 4px;
+  height: 45%;
+  background-color: black;
+  left: calc(50% - 2px);
+  bottom: 50%;
+  /* the animation itself: */
+  animation: rotate-pointer2;
+  animation-duration: 5s;
+  /* animation-iteration-count: infinite;  */
+  animation-timing-function: linear;
+  transform-origin: center bottom;
+  animation-play-state: paused;
+}
+
 @keyframes rotate-pointer {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-pointer2 {
   0% {
     transform: rotate(0deg);
   }
