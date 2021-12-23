@@ -1,27 +1,28 @@
-#container{
-    padding: 50px;
+#container {
+  padding: 50px;
 }
 
-#playButtons, #nextButtons 
-{
-    padding: 10px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    margin-bottom: 20px;
+#playButtons,
+#nextButtons {
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
-#myVideo{
-    width: 100%;
+#myVideo {
+  width: 100%;
 }
 
-#vidNum{
-    float: right;
+#vidNum {
+  float: right;
 }
 
-button{
-    width: 100%;
+button {
+  width: 100%;
 }
- 
+
+/* the timer */
 
 #clockitself {
   width: 50%;
