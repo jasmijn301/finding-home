@@ -35,8 +35,6 @@ let choice = 1;
 //This function is called upon when the stopwatch stops
 function animationEnds(event) {
 
-    console.log("end");
-
     if (choice == 1) {
         //check which video is playing and direct to the video of choice
         //if the last video is playing reset the buttons
@@ -48,16 +46,19 @@ function animationEnds(event) {
             vidPlaying = 0;
             document.getElementById("nextButtons").style.visibility = "visible";
         } else {
-            nextVideo2();
+            // nextVideo2();
+            console.log("error animationEnds, choice1")
         }
         myVideo.src = vids[vidPlaying];
         vidNumOut.innerHTML = (vidPlaying) + "/10";
 
         playVideo();
+
     } else if (choice == 2) {
         //check which video is playing and direct to the video of choice
         if (vidPlaying == 1) {
             vidPlaying = 7;
+            choice = 1;
         } else if (vidPlaying == 3) {
             vidPlaying = 6;
             removeButton();
@@ -72,6 +73,7 @@ function animationEnds(event) {
         vidNumOut.innerHTML = (vidPlaying) + "/10";
 
         playVideo();
+
     } else {
         console.log("error: choice element")
     }
@@ -98,10 +100,7 @@ function playPause(event) {
 
 function playVideo() {
 
-    console.log(choice);
-
     myVideo.play();
-
     visibility();
 }
 
