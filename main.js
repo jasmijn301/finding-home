@@ -13,10 +13,6 @@ document.getElementById("nextButtons").style.visibility = "hidden";
 document.getElementById("clockitself").style.visibility = "hidden";
 document.getElementById("clockitself2").style.visibility = "hidden";
 
-//style of the chosen button
-document.getElementById("btnNext1").style.background = "white";
-document.getElementById("btnNext2").style.background = "skyblue";
-
 //animation
 var timesUp = document.getElementById("pointer");
 var timesUp = document.getElementById("pointer2");
@@ -140,16 +136,20 @@ function vidEnded() {
 function nextVideo1() {
 
     choice = 1;
-    document.getElementById("btnNext1").style.background = "white";
-    document.getElementById("btnNext2").style.background = "skyblue";
+    document.getElementById("btnNext2").style.width = "90%";
+    document.getElementById("btnNext2").style.marginLeft = "5%";
+    document.getElementById("btnNext1").style.width = "100%";
+    document.getElementById("btnNext1").style.marginLeft = "0%";
 }
 
 //this video is called upon when the player chooses option 2
 function nextVideo2() {
 
     choice = choice + 1;
-    document.getElementById("btnNext1").style.background = "skyblue";
-    document.getElementById("btnNext2").style.background = "white";
+    document.getElementById("btnNext1").style.width = "90%";
+    document.getElementById("btnNext1").style.marginLeft = "5%";
+    document.getElementById("btnNext2").style.width = "100%";
+    document.getElementById("btnNext2").style.marginLeft = "0%";
 }
 
 function removeButton() {

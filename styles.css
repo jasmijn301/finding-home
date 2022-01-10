@@ -3,18 +3,46 @@
 }
 
 #playButtons {
-  padding: 10px;
   border: 1px solid gray;
   border-radius: 5px;
   margin-bottom: 20px;
   margin-top: 110px;
+  width: 8%;
+  float: left;
+}
+
+.playButton{
+  width: 100%;
+  padding: 10px;
+  font-size: large
 }
 
 #nextButtons {
-  padding: 10px;
-  border: 1px solid gray;
-  border-radius: 5px;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  /* border: 1px solid gray; */
+  /* border-radius: 5px; */
   margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+.nextButton{
+  margin-top: 20px;
+  font-size: larger;
+  box-shadow: 0 0 20px gray;
+}
+
+.c1 {
+  padding: 50px;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.c2 {
+  padding: 50px;
+  width: 90%;
+  margin-left: 5%;
 }
 
 #myVideo {
@@ -23,10 +51,6 @@
 
 #vidNum {
   float: right;
-}
-
-button {
-  width: 100%;
 }
 
 /* the timer */
