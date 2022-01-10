@@ -13,7 +13,8 @@ myVideo.addEventListener("ended", vidEnded);
 //visibility
 document.getElementById("btnPause").style.visibility = "hidden";
 document.getElementById("nextButtons").style.visibility = "hidden";
-// document.getElementById("clockitself").style.visibility = "hidden";
+document.getElementById("clockitself").style.visibility = "hidden";
+document.getElementById("clockitself2").style.visibility = "hidden";
 
 //style of the chosen button
 document.getElementById("btnNext1").style.background = "white";
@@ -109,14 +110,16 @@ function visibility() {
     //the option buttons should be hidden at the first part of each fragment and with the end vids
     if (vidPlaying == 0 || vidPlaying == 2 || vidPlaying == 4 || vidPlaying == 6 || vidPlaying == 7 || vidPlaying == 9 || vidPlaying == 10) {
         document.getElementById("nextButtons").style.visibility = "hidden";
-        // document.getElementById("clockitself").style.visibility = "hidden";
+        document.getElementById("clockitself").style.visibility = "hidden";
+        document.getElementById("clockitself2").style.visibility = "hidden";
     } else if (vidPlaying == 1) {
         document.getElementById("nextButtons").style.visibility = "visible";
         document.getElementById("pointer").style.animationPlayState = "running";
-        // document.getElementById("clockitself").style.visibility = "visible";
+        document.getElementById("clockitself").style.visibility = "visible";
     } else if (vidPlaying == 3 || vidPlaying == 8) {
         document.getElementById("nextButtons").style.visibility = "visible";
         document.getElementById("pointer2").style.animationPlayState = "running";
+        document.getElementById("clockitself2").style.visibility = "visible";
     } else {
         console.log("error: visibility()")
     }

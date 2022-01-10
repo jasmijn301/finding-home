@@ -2,7 +2,14 @@
   padding: 50px;
 }
 
-#playButtons,
+#playButtons {
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: 110px;
+}
+
 #nextButtons {
   padding: 10px;
   border: 1px solid gray;
@@ -48,6 +55,9 @@ button {
   align-items: center;
   width: 8%;
   padding: 10px;
+  float: left;
+  z-index: -1;
+  position: absolute;
 }
 
 #pointer {
