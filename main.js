@@ -1,17 +1,14 @@
 const myVideo = document.getElementById("myVideo");
 const btnPlay = document.getElementById("btnPlay");
-const btnPause = document.getElementById("btnPause");
 const vidNumOut = document.getElementById("vidNum");
 
 //buttons
 btnPlay.addEventListener("click", playPause);
-btnPause.addEventListener("click", playPause);
 btnNext1.addEventListener("click", nextVideo1);
 btnNext2.addEventListener("click", nextVideo2);
 myVideo.addEventListener("ended", vidEnded);
 
 //visibility
-document.getElementById("btnPause").style.visibility = "hidden";
 document.getElementById("nextButtons").style.visibility = "hidden";
 document.getElementById("clockitself").style.visibility = "hidden";
 document.getElementById("clockitself2").style.visibility = "hidden";
@@ -31,6 +28,8 @@ let vidPlaying = 0;
 
 let choice = 1;
 // choice 1 means option 1 is chosen, choice 2 means option 2 is chosen.
+let play = 0;
+//0 means the video is paused, 1 means the video is playing.
 
 //This function is called upon when the stopwatch stops
 function animationEnds(event) {
@@ -80,21 +79,22 @@ function animationEnds(event) {
 }
 
 function playPause(event) {
+    if (play == 0){
+        play = 1;
+        btnPlay.innerHTML = "pause";
+        playVideo();
 
-    switch (event.target.id) {
-        case "btnPlay":
-            playVideo();
-            document.getElementById("btnPlay").style.visibility = "hidden";
-            document.getElementById("btnPause").style.visibility = "visible";
-            break;
-        case "btnPause":
-            myVideo.pause();
-            document.getElementById("btnPause").style.visibility = "hidden";
-            document.getElementById("btnPlay").style.visibility = "visible";
-            //make sure the stopwatch doesn't play when the video is paused
-            document.getElementById("pointer").style.animationPlayState = "paused";
-            document.getElementById("pointer2").style.animationPlayState = "paused";
-            break;
+    }
+    else if (play == 1){
+        play = 0;
+        btnPlay.innerHTML = "play";
+        myVideo.pause();
+        //make sure the stopwatch doesn't play when the video is paused
+        document.getElementById("pointer").style.animationPlayState = "paused";
+        document.getElementById("pointer2").style.animationPlayState = "paused";
+    }
+    else {
+        console.log("error: playpause");
     }
 }
 
