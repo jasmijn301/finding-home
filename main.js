@@ -19,7 +19,7 @@ var timesUp = document.getElementById("pointer2");
 timesUp.addEventListener("animationend", animationEnds);
 
 //videos
-const vids = ["1.mp4", "1.5.mp4", "2.mp4", "2.5.mp4", "3.mp4", "3.5.mp4", "4.mp4", "5.mp4", "5.5.mp4", "6.mp4", "7.mp4"];
+const vids = ["1.mp4", "1.5.mp4", "2.mp4", "2.5.mp4", "3.mp4", "4.mp4", "5.mp4", "5.5.mp4", "6.mp4", "7.mp4"];
 let vidPlaying = 0;
 
 let choice = 1;
@@ -33,9 +33,9 @@ function animationEnds(event) {
     if (choice == 1) {
         //check which video is playing and direct to the video of choice
         //if the last video is playing reset the buttons
-        if (vidPlaying == 0 || vidPlaying == 1 || vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 4 || vidPlaying == 7 || vidPlaying == 8) {
+        if (vidPlaying == 0 || vidPlaying == 1 || vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 6 || vidPlaying == 7) {
             vidPlaying = vidPlaying + 1;
-        } else if (vidPlaying == 5 || vidPlaying == 6 || vidPlaying == 9 || vidPlaying == 10) {
+        } else if (vidPlaying == 4 || vidPlaying == 5 || vidPlaying == 8 || vidPlaying == 9) {
             document.getElementById("btnNext2").style.visibility = "visible";
             btnNext1.innerHTML = "option 1";
             vidPlaying = 0;
@@ -45,27 +45,27 @@ function animationEnds(event) {
             console.log("error animationEnds, choice1")
         }
         myVideo.src = vids[vidPlaying];
-        vidNumOut.innerHTML = (vidPlaying) + "/10";
+        vidNumOut.innerHTML = (vidPlaying) + "/9";
 
         playVideo();
 
     } else if (choice == 2) {
         //check which video is playing and direct to the video of choice
         if (vidPlaying == 1) {
-            vidPlaying = 7;
+            vidPlaying = 6;
             choice = 1;
         } else if (vidPlaying == 3) {
-            vidPlaying = 6;
+            vidPlaying = 5;
             removeButton();
-        } else if (vidPlaying == 8) {
-            vidPlaying = 10;
+        } else if (vidPlaying == 7) {
+            vidPlaying = 9;
             removeButton();
         } else {
             removeButton();
             vidPlaying = 0;
         }
         myVideo.src = vids[vidPlaying];
-        vidNumOut.innerHTML = (vidPlaying) + "/10";
+        vidNumOut.innerHTML = (vidPlaying) + "/9";
 
         playVideo();
 
@@ -103,7 +103,7 @@ function playVideo() {
 function visibility() {
 
     //the option buttons should be hidden at the first part of each fragment and with the end vids
-    if (vidPlaying == 0 || vidPlaying == 2 || vidPlaying == 4 || vidPlaying == 6 || vidPlaying == 7 || vidPlaying == 9 || vidPlaying == 10) {
+    if (vidPlaying == 0 || vidPlaying == 2 || vidPlaying == 4 || vidPlaying == 5 || vidPlaying == 6 || vidPlaying == 8 || vidPlaying == 9) {
         document.getElementById("nextButtons").style.visibility = "hidden";
         document.getElementById("clockitself").style.visibility = "hidden";
         document.getElementById("clockitself2").style.visibility = "hidden";
@@ -111,7 +111,7 @@ function visibility() {
         document.getElementById("nextButtons").style.visibility = "visible";
         document.getElementById("pointer").style.animationPlayState = "running";
         document.getElementById("clockitself").style.visibility = "visible";
-    } else if (vidPlaying == 3 || vidPlaying == 8) {
+    } else if (vidPlaying == 3 || vidPlaying == 7) {
         document.getElementById("nextButtons").style.visibility = "visible";
         document.getElementById("pointer2").style.animationPlayState = "running";
         document.getElementById("clockitself2").style.visibility = "visible";
@@ -123,7 +123,7 @@ function visibility() {
 function vidEnded() {
 
     //make sure if the player doesn't pick an option, the video still continues
-    if (vidPlaying == 0 || vidPlaying == 1 || vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 4 || vidPlaying == 7 || vidPlaying == 8) {
+    if (vidPlaying == 0 || vidPlaying == 1 || vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 6 || vidPlaying == 7) {
         animationEnds();
     } else {
         document.getElementById("btnNext1").style.visibility = "visible";
