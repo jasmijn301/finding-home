@@ -1,6 +1,15 @@
 #container {
-  padding: 50px;
+  padding: 20px;
 }
+
+.containerVid {
+  z-index: -2; 
+  position:absolute;
+}
+
+.containerOverVid {
+  margin-top: 20px;
+} 
 
 #playButtons {
   border: 1px solid gray;
@@ -24,7 +33,7 @@
   /* border: 1px solid gray; */
   /* border-radius: 5px; */
   margin-bottom: 20px;
-  padding-top: 20px;
+  padding-top: 100px;
 }
 
 .nextButton{
@@ -58,7 +67,7 @@
 #clockitself {
   width: 50%;
   padding-bottom: 50%;
-  background-color: rgb(121, 224, 255);
+  background-color: white;
   border: 5px solid black;
   border-radius: 50%;
   position: relative;
@@ -67,7 +76,7 @@
 #clockitself2 {
   width: 50%;
   padding-bottom: 50%;
-  background-color: rgb(121, 224, 255);
+  background-color: white;
   border: 5px solid black;
   border-radius: 50%;
   position: relative;
@@ -110,7 +119,6 @@
   /* the animation itself: */
   animation: rotate-pointer2;
   animation-duration: 5s;
-  /* animation-iteration-count: infinite;  */
   animation-timing-function: linear;
   transform-origin: center bottom;
   animation-play-state: paused;

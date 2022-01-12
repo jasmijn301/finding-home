@@ -35,17 +35,17 @@ function animationEnds(event) {
         //if the last video is playing reset the buttons
         if (vidPlaying == 0 || vidPlaying == 1 || vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 6 || vidPlaying == 7) {
             vidPlaying = vidPlaying + 1;
-        } else if (vidPlaying == 4 || vidPlaying == 5 || vidPlaying == 8 || vidPlaying == 9) {
-            document.getElementById("btnNext2").style.visibility = "visible";
-            btnNext1.innerHTML = "option 1";
-            vidPlaying = 0;
-            document.getElementById("nextButtons").style.visibility = "visible";
+            // } else if (vidPlaying == 4 || vidPlaying == 5 || vidPlaying == 8 || vidPlaying == 9) {
+            //     document.getElementById("btnNext2").style.visibility = "visible";
+            //     btnNext1.innerHTML = "option 1";
+            //     vidPlaying = 0;
+            //     play = 0;
+            //     choice = 1;
+            // document.getElementById("nextButtons").style.visibility = "visible";
         } else {
-            // nextVideo2();
-            console.log("error animationEnds, choice1")
+            console.log("error: animationEnds, choice1")
         }
         myVideo.src = vids[vidPlaying];
-        vidNumOut.innerHTML = (vidPlaying) + "/9";
 
         playVideo();
 
@@ -60,36 +60,37 @@ function animationEnds(event) {
         } else if (vidPlaying == 7) {
             vidPlaying = 9;
             removeButton();
+            // } else if (vidPlaying == 4 || vidPlaying == 5 || vidPlaying == 8 || vidPlaying == 9) {
+            //     vidPlaying = 0;
+            //     document.getElementById("btnNext2").style.visibility = "visible";
+            //     btnNext1.innerHTML = "Option 1";
+            //     play = 0;
+            //     choice = 1;
         } else {
-            removeButton();
-            vidPlaying = 0;
+            console.log("error: animationEnds, choice2")
         }
         myVideo.src = vids[vidPlaying];
-        vidNumOut.innerHTML = (vidPlaying) + "/9";
 
         playVideo();
 
     } else {
-        console.log("error: choice element")
+        console.log("error: animationEnds")
     }
 }
 
 function playPause(event) {
-    if (play == 0){
+    if (play == 0) {
         play = 1;
         btnPlay.innerHTML = "pause";
         playVideo();
-
-    }
-    else if (play == 1){
+    } else if (play == 1) {
         play = 0;
         btnPlay.innerHTML = "play";
         myVideo.pause();
         //make sure the stopwatch doesn't play when the video is paused
         document.getElementById("pointer").style.animationPlayState = "paused";
         document.getElementById("pointer2").style.animationPlayState = "paused";
-    }
-    else {
+    } else {
         console.log("error: playpause");
     }
 }
@@ -135,11 +136,21 @@ function vidEnded() {
 //this video is called upon when the player chooses option 1 or don't choose anything at all
 function nextVideo1() {
 
-    choice = 1;
-    document.getElementById("btnNext2").style.width = "90%";
-    document.getElementById("btnNext2").style.marginLeft = "5%";
-    document.getElementById("btnNext1").style.width = "100%";
-    document.getElementById("btnNext1").style.marginLeft = "0%";
+    if (vidPlaying == 4 || vidPlaying == 5 || vidPlaying == 8 || vidPlaying == 9) {
+        vidPlaying = 0;
+        document.getElementById("btnNext2").style.visibility = "visible";
+        btnNext1.innerHTML = "Option 1";
+        play = 0;
+        choice = 1;
+    } else if (vidPlaying == 1 || vidPlaying == 3 || vidPlaying == 7) {
+        choice = 1;
+        document.getElementById("btnNext2").style.width = "90%";
+        document.getElementById("btnNext2").style.marginLeft = "5%";
+        document.getElementById("btnNext1").style.width = "100%";
+        document.getElementById("btnNext1").style.marginLeft = "0%";
+    } else {
+        console.log("error: nextVideo1");
+    }
 }
 
 //this video is called upon when the player chooses option 2
