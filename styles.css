@@ -102,7 +102,7 @@
   bottom: 50%;
   /* the animation itself: */
   animation: rotate-pointer;
-  animation-duration: 5s;
+  animation-duration: 10s;
   /* animation-iteration-count: infinite;  */
   animation-timing-function: linear;
   transform-origin: center bottom;
@@ -118,7 +118,7 @@
   bottom: 50%;
   /* the animation itself: */
   animation: rotate-pointer2;
-  animation-duration: 5s;
+  animation-duration: 10s;
   animation-timing-function: linear;
   transform-origin: center bottom;
   animation-play-state: paused;
