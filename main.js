@@ -110,19 +110,30 @@ function visibility() {
 function vidEnded() {
 
     //make sure if the player doesn't pick an option, the video still continues
-    if (vidPlaying == 0 || vidPlaying == 1 || vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 6 || vidPlaying == 7) {
+    if (vidPlaying == 0 ||vidPlaying == 2 || vidPlaying == 3 || vidPlaying == 6 || vidPlaying == 7) {
         animationEnds();
     } else if (vidPlaying == 4 || vidPlaying == 5 || vidPlaying == 8 || vidPlaying == 9) {
         document.getElementById("nextButtons").style.visibility = "visible";
+        document.getElementById("question").style.visibility = "hidden";
+        question.innerHTML = "";
         btnNext1.innerHTML = "Replay";
         btnNext2.innerHTML = "Watch bloopers";
     } else if (vidPlaying == 10) {
         btnNext1.innerHTML = "Replay music video";
         btnNext2.innerHTML = "Replay bloopers";
         document.getElementById("nextButtons").style.visibility = "visible";
+    } else if (vidPlaying == 1) { 
+        animationEnds();
+        question.innerHTML = "You're exhausted"
+        btnNext1.innerHTML = "Catch my breath";
+        btnNext2.innerHTML = "Keep running anyways";
     } else {
         console.log("error: vidEnded()")
     }
+    document.getElementById("btnNext1").style.width = "90%";
+    document.getElementById("btnNext1").style.marginLeft = "5%";
+    document.getElementById("btnNext2").style.width = "90%";
+    document.getElementById("btnNext2").style.marginLeft = "5%";
 }
 
 //this function is called upon when the player chooses option 1 or doesn't choose anything at all
@@ -131,12 +142,13 @@ function nextVideo1() {
     if (vidPlaying == 4 || vidPlaying == 5 || vidPlaying == 8 || vidPlaying == 9 || vidPlaying == 10) {
         vidPlaying = 0;
         document.getElementById("nextButtons").style.visibility = "hidden";
-        btnNext1.innerHTML = "Option 1";
-        btnNext2.innerHTML = "Option 2";
+        btnNext1.innerHTML = "Run away";
+        btnNext2.innerHTML = "Hide";
         btnPlay.innerHTML = "play";
         play = 0;
         choice = 1;
         myVideo.src = vids[vidPlaying];
+        question.innerHTML = "Someone is coming your way";
     } else if (vidPlaying == 1 || vidPlaying == 3 || vidPlaying == 7) {
         choice = 1;
         document.getElementById("btnNext2").style.width = "90%";

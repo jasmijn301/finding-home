@@ -1,42 +1,44 @@
 #container {
-  padding: 20px;
+  padding: 2 0px;
 }
 
 .containerVid {
-  z-index: -2; 
-  position:absolute;
+  z-index: -2;
+  position: absolute;
+  width: 80%;
+  margin-left: 50px;
 }
 
 .containerOverVid {
   margin-top: 20px;
-} 
+  width: 80%;
+}
 
 #playButtons {
   border: 1px solid gray;
   border-radius: 5px;
   margin-bottom: 20px;
-  margin-top: 110px;
+  margin-top: 30px;
   width: 8%;
   float: left;
+  margin-left: 4%;
 }
 
-.playButton{
+.playButton {
   width: 100%;
   padding: 10px;
-  font-size: large
+  font-size: large;
 }
 
 #nextButtons {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
-  /* border: 1px solid gray; */
-  /* border-radius: 5px; */
   margin-bottom: 20px;
   padding-top: 100px;
 }
 
-.nextButton{
+.nextButton {
   margin-top: 20px;
   font-size: larger;
   box-shadow: 0 0 20px gray;
@@ -54,16 +56,19 @@
   margin-left: 5%;
 }
 
-#myVideo {
-  width: 100%;
+#question {
+  font-size: 150%;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 15%;
 }
 
-#vidNum {
-  float: right;
+#myVideo {
+  width: 90%;
 }
+
 
 /* the timer */
-
 #clockitself {
   width: 50%;
   padding-bottom: 50%;
@@ -71,6 +76,7 @@
   border: 5px solid black;
   border-radius: 50%;
   position: relative;
+  margin-left: 15px;
 }
 
 #clockitself2 {
@@ -86,8 +92,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 8%;
-  padding: 10px;
+  width: 12%;
+  padding: 25px;
   float: left;
   z-index: -1;
   position: absolute;
